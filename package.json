@@ -4,8 +4,9 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron dist/client/main.js",
-    "dev": "nodemon src/app.ts",
+    "start": "node dist/app/app.js",
+    "client": "electron dist/client/main.js",
+    "dev": "nodemon src/app/app.ts",
     "build": "tsc -p ."
   },
   "repository": {
