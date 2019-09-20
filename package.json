@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/majorsprojects/blockchain-in-healthcare#readme",
   "devDependencies": {
+    "@types/crypto-js": "^3.1.43",
     "@types/express": "^4.17.1",
     "@types/node": "^12.7.5",
     "electron": "6.0.10",
@@ -29,6 +30,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "express": "^4.17.1"
   }
 }
