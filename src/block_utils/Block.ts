@@ -17,19 +17,10 @@ export default class Block {
     return `Block - Timestamp : ${this.timestamp} PreviousHash : ${this.prevhash} Hash : ${this.hash} data : ${this.data}`;
   }
 
-  static createGenesis(): Block {
-    return new Block("genesis timestamp", "---", "hash", "genesis data");
-  }
-
   static mineBlock(lastblock: Block, data: string) {
-    // add mine algorithm
     const lasthash = lastblock.hash;
     const timestamp = Date.now().toString();
-    const blockHash = this.hash(lasthash + timestamp + data);
-    return new Block(timestamp, lasthash, blockHash, data);
-  }
-
-  static hash(data: string) {
-    return sha256(data).toString();
+    const hash = sha256(lasthash + data + timestamp).toString();
+    return new Block(timestamp, lasthash, hash, data);
   }
 }
