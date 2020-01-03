@@ -22,6 +22,17 @@ class Block {
       Hash: ${this.hash}
     `;
   }
+
+  static genesis() {
+    return new this("GenesisTime", [], "-----", "somehash");
+  }
+
+  static mineBlock(lastblock, data) {
+    const lasthash = lastblock.hash;
+    const timestamp = Date.now();
+    const hash = "hash";
+    return new this(timestamp, data, lasthash, hash);
+  }
 }
 
 module.exports = Block;
