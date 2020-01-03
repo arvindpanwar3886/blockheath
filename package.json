@@ -19,5 +19,8 @@
   "homepage": "https://github.com/majorsprojects/blockchain-in-healthcare#readme",
   "devDependencies": {
     "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
   }
 }

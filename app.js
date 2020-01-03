@@ -1,8 +1,11 @@
-const Block = require("./block");
+const Blockchain = require("./blockchain");
 
-const block = new Block("do", "do", "dum", "dum");
+const bc = new Blockchain();
 
-console.log(block.getBlock());
-console.log(Block.genesis().getBlock());
+for (let i = 0; i < 10; i++) {
+  bc.addBlock(`${Date.now()}dudududu`);
+}
 
-console.log(Block.mineBlock(Block.genesis(), "dudududu").getBlock());
+for (let i = 0; i < bc.chain.length; i++) {
+  console.log(bc.chain[i].getBlock());
+}
