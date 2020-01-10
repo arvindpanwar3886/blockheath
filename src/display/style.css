@@ -1,36 +1,36 @@
 .Bg {
-    background-color: black;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background-image: url("raing_bg.png");
+  background-color: white;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  /* background-image: url("raing_bg.png");
     -webkit-animation: loop 40s forwards linear infinite;
     animation: loop 40s forwards linear infinite;
     top: 0px;
-    left: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    left: 0px;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 @keyframes loop {
-    0% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 100% -100%;
-    }
-    100% {
-      background-position: 0% 0%;
-    }
+  0% {
+    background-position: 0% 0%;
   }
+  50% {
+    background-position: 100% -100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
 
-  body{
-    font-family: "Abel", sans-serif;
-  color: white;
+body {
+  font-family: "Abel", sans-serif;
+  color: grey;
   text-align: center;
 }
 
-h1{
-    font-size: 10vh;
-    margin: 0px;
+h1 {
+  font-size: 10vh;
+  margin: 0px;
 }
