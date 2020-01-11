@@ -2,10 +2,12 @@ const Blockchain = require("./blockchain");
 
 const bc = new Blockchain();
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 5; i++) {
   bc.addBlock(`${Date.now()}dudududu`);
 }
 
-for (let i = 0; i < bc.chain.length; i++) {
-  console.log(bc.chain[i].getBlock());
-}
+const bc2 = new Blockchain();
+
+bc2.addBlock("added block on 2nd chain");
+
+console.log(bc.isChainValid(bc2.chain));
