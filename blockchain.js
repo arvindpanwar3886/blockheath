@@ -29,11 +29,29 @@ class Blockchain {
       const block = chain[i]; // current block
       const lastblock = chain[i - 1];
       // check if hashes match?
-      if (block.lasthash !== lastblock.hash) {
+      if (
+        block.hash !== Block.blockHash(block) ||
+        block.lasthash !== lastblock.hash
+      ) {
         return false;
       }
     }
     return true;
+  }
+
+  // replace the chain when we get a single longest chain
+  replaceChain(incomingChain) {
+    // if incoming chain is not long enough and not valid
+    if (this.chain.length >= incomingChain.length) {
+      console.log("Incoming chain in not long enough.");
+      return;
+    } else if (!this.isChainValid(incomingChain)) {
+      console.log("Incoming chain in not valid.");
+      return;
+    }
+
+    console.log("Got a new longer chain.");
+    this.chain = incomingChain;
   }
 }
 

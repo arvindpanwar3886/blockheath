@@ -31,8 +31,19 @@ class Block {
   static mineBlock(lastblock, data) {
     const lasthash = lastblock.hash;
     const timestamp = Date.now();
-    const hash = SHA256(`${timestamp}${lasthash}${data}`);
+    const hash = Block.hash(timestamp, lasthash, data);
     return new this(timestamp, data, lasthash, hash);
+  }
+
+  // to find hash of individual block if we have all the data
+  static hash(timestamp, lasthash, data) {
+    return SHA256(`${timestamp}${lasthash}${data}`).toString();
+  }
+
+  // when we have the block(wrapper function)
+  static blockHash(block) {
+    const { timestamp, lasthash, data } = block;
+    return Block.hash(timestamp, lasthash, data);
   }
 }
 
