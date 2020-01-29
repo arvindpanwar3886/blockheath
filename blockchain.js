@@ -9,6 +9,7 @@ class Blockchain {
     const lastblock = this.chain[this.chain.length - 1];
     const block = Block.mineBlock(lastblock, data);
     this.chain.push(block);
+    return block;
   }
 
   // chain validation
