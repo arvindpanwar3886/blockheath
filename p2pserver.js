@@ -22,8 +22,7 @@ class P2pServer {
     // add the socket to the socket array whenever a new socket is found
     this.sockets.push(socket);
     this.messageHandler(socket);
-    // share the blockchain with every connected socket.
-    socket.send(JSON.stringify(this.blockchain.chain));
+    this.sendChain(socket);
   }
 
   connectToAllSockets() {
@@ -45,6 +44,19 @@ class P2pServer {
       const data = JSON.parse(message);
       console.log("INCOMING MESSAGE", data);
       console.log("BLOKCHAIN IN THIS SERVER", this.blockchain.chain);
+
+      this.blockchain.replaceChain(data); // data is incoming chain
+    });
+  }
+
+  sendChain(socket) {
+    // share the blockchain with every connected socket.
+    socket.send(JSON.stringify(this.blockchain.chain));
+  }
+
+  syncChain() {
+    this.sockets.forEach(socket => {
+      this.sendChain(socket);
     });
   }
 }
