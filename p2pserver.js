@@ -21,12 +21,13 @@ class P2pServer {
   addSocketToList(socket) {
     // add the socket to the socket array whenever a new socket is found
     this.sockets.push(socket);
+    // check for incoming data
     this.messageHandler(socket);
     this.sendChain(socket);
   }
 
   connectToAllSockets() {
-    if (peers.length == 0) console.log(`Found ${peers.length} PEERS.`);
+    if (peers.length == 0) console.log(`NO PEERS AVAILABLE.`);
     else console.log(`Found ${peers.length} PEER(s), now connecting...`);
     peers.forEach((peer, i) => {
       // ws://localhost:5001
