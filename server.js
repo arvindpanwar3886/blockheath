@@ -18,6 +18,11 @@ app.get("/blocks", (req, res) => {
 });
 
 app.post("/mine", (req, res) => {
+  if (!req.body.data) {
+    return res.json({
+      message: "No Record found!"
+    })
+  }
   const block = bc.addBlock(req.body.data);
   console.log(`Block added: ${block.getBlock()}`);
   p2pServer.syncChain();
