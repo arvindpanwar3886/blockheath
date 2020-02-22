@@ -31,24 +31,24 @@ class Block {
   }
 
   static genesis() {
-    return new this("GenesisTime", [], "-----", "somehash", 0, DIFFICULTY);
+    return new this("GenesisTime", "", "-----", "somehash", 0, DIFFICULTY);
   }
 
   static mineBlock(lastblock, data) {
     const lasthash = lastblock.hash;
-    const { difficulty } = lastblock;
+    let { difficulty } = lastblock;
     let nonce = 0,
       hash,
       timestamp;
 
     do {
+      nonce++;
       timestamp = Date.now();
       difficulty = Block.changeDifficulty(lastblock, timestamp);
       hash = Block.hash(timestamp, lasthash, data, nonce, difficulty);
-      nonce++;
     } while (hash.substring(0, difficulty) !== "0".repeat(difficulty));
 
-    return new this(timestamp, data, lasthash, hash, nonce);
+    return new this(timestamp, data, lasthash, hash, nonce, difficulty);
   }
 
   // to find hash of individual block if we have all the data

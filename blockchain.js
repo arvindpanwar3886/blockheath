@@ -34,6 +34,7 @@ class Blockchain {
         block.hash !== Block.blockHash(block) ||
         block.lasthash !== lastblock.hash
       ) {
+        console.log('Hashes do not match');
         return false;
       }
     }

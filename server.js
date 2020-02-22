@@ -3,13 +3,15 @@ const bodyparser = require("body-parser");
 const blockchain = require("./blockchain");
 const P2pServer = require("./p2pserver");
 
+const app = express();
+app.use(bodyparser.json());
+//app.use(bodyparser.urlencoded({ extended: true }));
+
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
 
-const app = express();
 const bc = new blockchain();
 const p2pServer = new P2pServer(bc);
 
-app.use(bodyparser.json());
 
 app.get("/blocks", (req, res) => {
   res.json(bc.chain);
