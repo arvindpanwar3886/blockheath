@@ -1,6 +1,6 @@
 const BlockchainUtil = require('./utils');
 
-class Wallet {
+class Patient {
   constructor() {
     this.reports = [{
       data: 'Something Something'
@@ -9,12 +9,12 @@ class Wallet {
     this.publicKey = this.keyPair.getPublic().encode('hex');
   }
 
-  getWallet() {
-    return `Wallet:
+  getPatientInfo() {
+    return `PatientInfo:
       Reports: ${this.reports}
       Public Key: ${this.publicKey}
     `;
   }
 }
 
-module.exports = Wallet;
+module.exports = Patient;
