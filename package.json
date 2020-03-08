@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "test": "jest --watchAll",
     "start": "electron .",
     "dev": "nodemon ./server"
   },
@@ -20,7 +21,11 @@
   "homepage": "https://github.com/majorsprojects/blockchain-in-healthcare#readme",
   "devDependencies": {
     "electron": "^7.1.8",
+    "jest": "^25.1.0",
     "nodemon": "^2.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

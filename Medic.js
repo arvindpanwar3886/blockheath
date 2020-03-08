@@ -1,20 +1,27 @@
 const BlockchainUtil = require('./utils');
 
-class Patient {
+class Medic {
   constructor() {
     this.reports = [{
       data: 'Something Something'
     }];
+    this.rewards = 0;
     this.keyPair = BlockchainUtil.genKeyPair();
     this.publicKey = this.keyPair.getPublic().encode('hex');
   }
 
-  getPatientInfo() {
-    return `PatientInfo:
+  getMedic() {
+    return `Medic:
       Reports: ${this.reports}
+      Rewards: ${this.rewards}
       Public Key: ${this.publicKey}
     `;
   }
+
+  // sign report transaction
+  sign(data) {
+    return this.keyPair.sign(data);
+  }
 }
 
-module.exports = Patient;
+module.exports = Medic;

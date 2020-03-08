@@ -5,7 +5,7 @@
   Lasthash
 
 */
-const SHA256 = require("crypto-js/sha256");
+const BlockchainUtil = require('./utils');
 const DIFFICULTY = 3,
   MINE_RATE = 2000;
 
@@ -53,7 +53,7 @@ class Block {
 
   // to find hash of individual block if we have all the data
   static hash(timestamp, lasthash, data, nonce, difficulty) {
-    return SHA256(
+    return BlockchainUtil.hash(
       `${timestamp}${lasthash}${data}${nonce}${difficulty}`
     ).toString();
   }
