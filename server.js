@@ -104,13 +104,7 @@ app.get('/reports', (req, res) => {
 
 app.post('/transact', (req, res) => {
   const { patientKey, patientName, doctorName, date, patientCondition } = req.body;
-  console.log("----------", req.body);
   let report;
-
-  // if (!patientKey || !patientName || !doctorName || !date || !patientCondition) {
-  //   console.log('nothing found');
-  //   return;
-  // }
 
   report = {
     patientName, doctorName, date, patientCondition
