@@ -1,0 +1,25 @@
+<%- include('head.ejs'); %>
+<%- include('navbar.ejs'); %>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">MediChain</h1>
+        <p class="lead">A secure way to store medical reports. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Quos aut, labore facilis tempore, non, voluptates itaque magnam molestiae tempora ex quo fuga
+            officia. Repellat eius eos suscipit sint, ea itaque.</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4>Patient Key</h4>
+            <div class="alert alert-primary" role="alert" id="public_key_alert">
+                <%= patientKey %>
+            </div>
+        </div>
+        <div class="col">
+            <h4>Reports</h4>
+
+        </div>
+    </div>
+</div>
+<%- include('foot.ejs'); %>

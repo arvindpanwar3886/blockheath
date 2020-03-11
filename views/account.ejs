@@ -1,0 +1,38 @@
+<%- include('head.ejs'); %>
+<%- include('navbar.ejs'); %>
+
+<div class="container">
+
+  <div class="row">
+    <h2>Account</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Patient's Name</th>
+          <th scope="col">Doctor's Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Report</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% if(reports){ %>
+        <% reports.forEach((report, i) => { %>
+        <tr>
+          <% if(report.report) { %>
+          <th scope="row"><%= i+1 %></th>
+          <td><%= report.report.patientName %></td>
+          <td><%= report.report.doctorName %></td>
+          <td><%= report.report.date %></td>
+          <td><%= report.report.patientCondition %></td>
+          <% } %>
+        </tr>
+        <% }) %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('foot.ejs'); %>

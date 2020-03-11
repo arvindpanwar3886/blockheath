@@ -25,6 +25,7 @@ class Medic {
   }
 
   createTransaction(patient, report, transactionPool) {
+
     if (!report) {
       console.log('Report is not valid! [Medic]');
       return;
@@ -42,6 +43,19 @@ class Medic {
     }
 
     return transaction;
+  }
+
+  getMedicReports(blockchain) {
+    let transactions = [];
+    blockchain.chain.forEach(block => {
+      block.data.forEach(transaction => {
+        transactions.push(transaction);
+      });
+    });
+
+    const medicInputTs = transactions.filter(transaction => transaction.input.address === this.publicKey);
+
+    return medicInputTs;
   }
 
 }

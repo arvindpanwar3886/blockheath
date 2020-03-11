@@ -7,11 +7,16 @@ const ReportTransactionPool = require('./report-pool');
 const Miner = require('./miner');
 
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(bodyparser.json());
 app.use(cors());
-//app.use(bodyparser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.use(bodyparser.urlencoded({ extended: true }));
+
+// serving static files.
+app.use(express.static(path.join(__dirname, "public")));
 
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
 
@@ -26,10 +31,48 @@ app.get("/blocks", (req, res) => {
   res.json(bc.chain);
 });
 
+app.get("/", (req, res) => {
+  res.render('index', { PORT: HTTP_PORT, patientKey: medic.publicKey, chain: bc.chain });
+});
+
+app.get("/add-report", (req, res) => {
+  res.render('add-report');
+});
+
+app.get("/account", (req, res) => {
+
+  const blockData = bc.chain.map((block, i) => {
+    if (i >= 1) {
+      // console.log(block.data[0].outputs);
+      return block.data[0].outputs;
+    }
+  });
+
+  const reportList = blockData.filter(block => {
+    if (block) {
+      return block;
+    }
+  });
+
+  let rep = [];
+
+  for (let i = 0; i < reportList.length; i++) {
+    rep = rep.concat(reportList[i]);
+  }
+
+  const reports = rep.filter(r => r.address === medic.publicKey);
+
+  res.render('account', { reports });
+});
+
 app.get('/mine-transactions', (req, res) => {
   const block = miner.mine();
   console.log(`New block added ${block.getBlock()}`);
   res.redirect("/blocks");
+});
+
+app.get("/mine", (req, res) => {
+  res.render("mine");
 });
 
 app.post("/mine", (req, res) => {
@@ -46,14 +89,36 @@ app.post("/mine", (req, res) => {
 
 app.get('/transactions', (req, res) => {
   res.json(tp.transactions);
+  // res.render('report-pool', { transactions: tp.transactions });
+});
+
+// app.get('/report-pool', (req, res) => {
+//   // res.json(tp.transactions);
+//   res.render('report-pool', { transactions: tp.transactions });
+// });
+
+app.get('/reports', (req, res) => {
+  let reports = medic.getMedicReports(bc);
+  res.json(reports);
 });
 
 app.post('/transact', (req, res) => {
-  const { patient, report } = req.body;
-  const transaction = medic.createTransaction(patient, report, tp);
+  const { patientKey, patientName, doctorName, date, patientCondition } = req.body;
+  console.log("----------", req.body);
+  let report;
+
+  // if (!patientKey || !patientName || !doctorName || !date || !patientCondition) {
+  //   console.log('nothing found');
+  //   return;
+  // }
+
+  report = {
+    patientName, doctorName, date, patientCondition
+  };
+  const transaction = medic.createTransaction(patientKey, report, tp);
   console.log(transaction);
   p2pServer.broadcastTransaction(transaction);
-  res.redirect('/transactions');
+  res.render('add-report');
 });
 
 app.get("/patient-key", (req, res) => {

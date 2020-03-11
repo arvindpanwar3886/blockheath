@@ -1,0 +1,50 @@
+<%- include('head.ejs'); %>
+<%- include('navbar.ejs'); %>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10">
+            <h3>Add Medical Report</h3>
+        </div>
+    </div>
+    <form action="/transact" method="POST">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="patientKey">Patient's Key</label>
+                    <input type="text" class="form-control" name="patientKey">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="patientName">Patient's Name</label>
+                    <input type="text" class="form-control" name="patientName">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="doctorName">Doctor's Name</label>
+                    <input type="text" class="form-control" name="doctorName">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="text" class="form-control" name="date">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="patient_data">Patient Condition</label>
+                    <textarea class="form-control" id="patient_data" rows="5" name="patientCondition"></textarea>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
+<%- include('foot.ejs'); %>
