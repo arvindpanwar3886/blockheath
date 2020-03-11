@@ -1,4 +1,5 @@
 const BlockchainUtil = require('./utils');
+const ReportTransaction = require('./report-transaction');
 
 class Medic {
   constructor() {
@@ -22,6 +23,27 @@ class Medic {
   sign(data) {
     return this.keyPair.sign(data);
   }
+
+  createTransaction(patient, report, transactionPool) {
+    if (!report) {
+      console.log('Report is not valid! [Medic]');
+      return;
+    }
+
+    let transaction = transactionPool.existingTransaction(this.publicKey);
+
+    if (transaction) {
+      // update
+      transaction.update(this, patient, report);
+    } else {
+      transaction = ReportTransaction.newTransaction(this, patient, report);
+
+      transactionPool.updateOrAddTransaction(transaction);
+    }
+
+    return transaction;
+  }
+
 }
 
 module.exports = Medic;

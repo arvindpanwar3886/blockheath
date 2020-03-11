@@ -1,4 +1,5 @@
 const BlockchainUtil = require('./utils');
+const { MINING_REWARD } = require('./config');
 
 class ReportTransaction {
   constructor() {
@@ -8,8 +9,6 @@ class ReportTransaction {
   }
 
   static newTransaction(medic, patientKey, report) {
-    // local report transaction
-    const transaction = new this();
 
     // Should be a valid report
     if (!report) {
@@ -18,7 +17,8 @@ class ReportTransaction {
     }
 
     // on valid report create output of report transaction
-    transaction.outputs.push(...[
+
+    return ReportTransaction.transactionWithOutputs(medic, [
       // person responsible for adding report
       {
         report,
@@ -30,26 +30,58 @@ class ReportTransaction {
         address: patientKey
       }
     ]);
-
-    ReportTransaction.signTransaction(transaction, medic);
-
-    return transaction;
   }
+
+  // static rewardTransaction(minerMedic, medichainMedic) {
+  //   return ReportTransaction.transactionWithOutputs(medichainMedic, [{
+
+  //   }])
+  // }
 
   static signTransaction(reportTransaction, medic) {
     reportTransaction.input = {
       timestamp: Date.now(),
       res: "Medic",
       address: medic.publicKey, // addr of sender
-      signature: medic.sign(BlockchainUtil.hash(transaction.outputs))
+      signature: medic.sign(BlockchainUtil.hash(reportTransaction.outputs))
     };
   }
 
-  verifyTransaction(transaction) {
+  static verifyTransaction(transaction) {
     return BlockchainUtil.verifySignature(
       transaction.input.address,
       transaction.input.signature,
       BlockchainUtil.hash(transaction.outputs));
+  }
+
+  update(medic, patient, report) {
+    const medicOutput = this.outputs.find(output => output.address === medic.publicKey);
+
+    if (!report) {
+      console.log('report not valid [medic-update]');
+      return;
+    }
+
+    medicOutput.report = report;
+
+    this.outputs.push({
+      report, address: patient
+    });
+
+    ReportTransaction.signTransaction(this, medic);
+
+    return this;
+  }
+
+  static transactionWithOutputs(medic, outputs) {
+    // local report transaction
+    const transaction = new this();
+
+    transaction.outputs.push(...outputs);
+
+    ReportTransaction.signTransaction(transaction, medic);
+
+    return transaction;
   }
 }
 

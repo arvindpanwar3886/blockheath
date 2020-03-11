@@ -16,7 +16,7 @@ class BlockchainUtil {
     return SHA256(JSON.stringify(data)).toString();
   }
 
-  verifySignature(publicKey, signature, dataHash) {
+  static verifySignature(publicKey, signature, dataHash) {
     return ec.keyFromPublic(publicKey, 'hex').verify(dataHash, signature);
   }
 }
