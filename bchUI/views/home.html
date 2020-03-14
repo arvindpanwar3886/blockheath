@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
+    <title>MediChain | Home</title>
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html" class="navLogo">MediChain</a>
+      <a class="navlink home" href="#">
+        <i class="fas fa-home" title="Home"></i>
+      </a>
+      <a class="navlink addReport" href="./patientDetailsForm.html">
+        <i class="fas fa-plus" title="Add Report"></i>
+      </a>
+      <a class="navlink mineReport" href="#">
+        <i class="fas fa-redo-alt" title="Mine Report"></i>
+      </a>
+      <a class="navlink account" href="#">
+        <i class="far fa-user-circle" title="Account"></i>
+      </a>
+    </nav>
+    <section class="aboutUs">
+      <div class="container">
+        <h1>MediChain</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+          cupiditate, quis sequi eius optio, eligendi, dolorem praesentium ex
+          dolorum asperiores hic odit voluptatum in. Nesciunt nobis laborum hic
+          aliquid aspernatur doloremque libero mollitia saepe reiciendis vel!
+          Autem porro eveniet earum ducimus ut enim deserunt modi. Reprehenderit
+          minima necessitatibus eligendi voluptas.
+        </p>
+      </div>
+    </section>
+    <section class="data container">
+      <h2 class="sectionHeading">patient key</h2>
+      <span id="key" class="key" title="click to copy"
+        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus quam
+        error minus nulla magni adipisci aliquam deserunt eligendi dolore
+        repellat? Non perspiciatis dolorum magnam qui, minima maxime! Cumque,
+        recusandae. Cupiditate ad tempore, eos illum, obcaecati quia accusamus
+        architecto, odit asperiores maiores quo perspiciatis repellendus
+        assumenda debitis. Dolorem, aspernatur aliquid est debitis, quisquam
+        voluptas eos alias temporibus perspiciatis aperiam repellendus nam at et
+        autem voluptate quo rem hic cumque praesentium quod, cupiditate sint
+        quos. Tempore inventore velit est ex aspernatur maiores ad? Fuga maxime
+        possimus consectetur voluptas, dolore animi soluta quo! Nemo assumenda
+        vel nostrum labore neque perspiciatis dolor veritatis quaerat!</span
+      >
+    </section>
+    <section class="reports container">
+      <h2 class="sectionHeading">reports</h2>
+    </section>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      let key = document.getElementById("key");
+
+      key.onclick = function() {
+        let inp = document.createElement("input");
+        document.body.appendChild(inp);
+        inp.value = `spiciatis repellendus
+        assumenda debitis. Dolorem, aspernatur aliquid est debitis, quisquam
+        voluptas eos alias temporibus perspiciatis aperiam repellendus nam at et
+        autem voluptate quo rem hic cumque praesentium quod, cupiditate sint
+        quos. Tempore inventore velit est ex aspernatur maiores ad? Fuga maxime
+        possimus consectetur voluptas, dolore animi soluta quo! Nemo assumenda
+        vel nostrum labore neque perspiciatis dolor veritatis quaerat`;
+        inp.select();
+        document.execCommand("copy", false);
+        inp.remove();
+      };
+    });
+  </script>
+</html>

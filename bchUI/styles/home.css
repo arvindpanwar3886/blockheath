@@ -1,0 +1,34 @@
+.aboutUs {
+  color: #eee;
+  background: #777;
+  overflow: auto;
+}
+
+.aboutUs h1 {
+  font-weight: 300;
+  font-size: 6.4rem;
+}
+
+.aboutUs p {
+  font-size: 2.4rem;
+  font-weight: 300;
+  text-align: justify;
+}
+
+.key {
+  display: inline-block;
+  background: #777;
+  text-overflow: ellipsis;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  cursor: copy;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.reports {
+  overflow: auto;
+}

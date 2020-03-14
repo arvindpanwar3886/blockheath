@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/poc.css" />
+    <title>MediChain Dashboard</title>
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html" class="navLogo">MediChain</a>
+      <a class="navlink home" href="#">
+        <i class="fas fa-home" title="Home"></i>
+      </a>
+      <a class="navlink addReport" href="./patientDetailsForm.html">
+        <i class="fas fa-plus" title="Add Report"></i>
+      </a>
+      <a class="navlink mineReport" href="#">
+        <i class="fas fa-redo-alt" title="Mine Report"></i>
+      </a>
+      <a class="navlink account" href="#">
+        <i class="far fa-user-circle" title="Account"></i>
+      </a>
+    </nav>
+    <main class="flexbox wrapContent">
+      <div class="keyDetails card">
+        <h3 class="sectionHeading">Patient Key</h3>
+        <span id="key" class="key"
+          >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque,
+          velit laboriosam! Vel delectus ut dolores voluptatibus mollitia
+          voluptas! Nemo, facere! Lorem ipsum dolor sit amet, consectetur
+          adipisicing elit. Neque magni consequuntur odio eveniet esse quidem,
+          deleniti ratione corporis nesciunt delectus.</span
+        >
+      </div>
+      <div class="aboutUs card">
+        <h1>about us</h1>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum eos,
+          voluptatum, totam omnis dicta ut atque assumenda distinctio ipsum
+          blanditiis soluta corrupti molestias velit quidem? Officia mollitia
+          totam itaque ab.
+        </p>
+      </div>
+      <div class="recordForm card">
+        <h3 class="sectionHeading">
+          Add Record
+        </h3>
+        <form action="">
+          <div class="formElement">
+            <input type="text" name="" id="" placeholder="Patient's Key" />
+          </div>
+          <div class="formElement">
+            <input type="text" name="" id="" placeholder="Patient's Name" />
+          </div>
+          <div class="formElement">
+            <input type="text" name="" id="" placeholder="Doctor's Name" />
+          </div>
+          <div class="formElement">
+            <input type="date" name="" id="" placeholder="Date" />
+          </div>
+          <div class="formElement">
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="Diagnosis"
+            ></textarea>
+          </div>
+          <input class="btnCircle" type="submit" value="+" />
+        </form>
+      </div>
+    </main>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      let key = document.getElementById("key");
+
+      key.onclick = function() {
+        let inp = document.createElement("input");
+        document.body.appendChild(inp);
+        inp.value = `spiciatis repellendus
+        assumenda debitis. Dolorem, aspernatur aliquid est debitis, quisquam
+        voluptas eos alias temporibus perspiciatis aperiam repellendus nam at et
+        autem voluptate quo rem hic cumque praesentium quod, cupiditate sint
+        quos. Tempore inventore velit est ex aspernatur maiores ad? Fuga maxime
+        possimus consectetur voluptas, dolore animi soluta quo! Nemo assumenda
+        vel nostrum labore neque perspiciatis dolor veritatis quaerat`;
+        inp.select();
+        document.execCommand("copy", false);
+        inp.remove();
+      };
+    });
+  </script>
+</html>
