@@ -57,6 +57,11 @@ a {
   flex-direction: column;
 }
 
+.flexFullHeight {
+  justify-content: stretch;
+  align-items: stretch;
+}
+
 .fullHeight {
   height: 100vh;
 }
@@ -79,6 +84,21 @@ a {
   box-shadow: 0 0 3px #3498db;
 }
 
+.btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2.4rem;
+  font-weight: 400;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #3498db;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
 .btnCircle {
   height: 5rem;
   width: 5rem;
@@ -89,6 +109,35 @@ a {
   background-color: #3498db;
   border: none;
   cursor: pointer;
+  outline: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 2rem;
+  left: 50%;
+  max-width: 800px;
+  width: 100%;
+  transform: translateX(-50%);
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal .close {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  font-size: 2.4rem;
+}
+
+.modal .close i {
+  cursor: pointer;
+}
+
+.modal .modalContent {
+  margin: 2rem 3rem;
 }
 
 /*logo*/
@@ -138,15 +187,14 @@ nav {
   font-weight: 300;
   text-transform: capitalize;
   padding: 1.5rem 3rem;
+  justify-content: space-between;
 }
 
 .navlink {
   margin-left: 3rem;
   margin-right: 3rem;
-}
-
-.navlink:hover {
-  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  align-self: center;
 }
 
 /*main*/
@@ -155,11 +203,13 @@ main {
 }
 
 /*form*/
-.recordsForm {
-  padding: 2rem;
-  border-radius: 2rem;
-  background-color: #777;
-  flex: 1;
+.recordForm form {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.recordForm form .formElement:nth-child(even) {
+  margin-left: 1rem;
 }
 
 .formElement input,
@@ -176,8 +226,29 @@ main {
   font-size: 1.6rem;
   transition: ease-in-out 0.3s;
 }
+
+#patientKey {
+  flex-basis: 48%;
+}
+
+#patientName {
+  flex-basis: 48%;
+}
+
+#docName {
+  flex-basis: 48%;
+}
+
+#date {
+  flex-basis: 48%;
+}
+
+#diagnosis {
+  flex-basis: 100%;
+}
+
 /*about us*/
-.aboutUs {
+.utilsMenu {
   flex: 1;
 }
 
@@ -192,8 +263,12 @@ main {
   text-align: justify;
 }
 
+.utilsMenu .mine {
+  background-color: #6c757d;
+}
+
 .keyDetails {
-  max-width: 99%;
+  max-width: 70%;
 }
 
 .key {
@@ -222,5 +297,9 @@ form .btnCircle {
 }
 
 .recordForm {
-  flex-basis: 50%;
+  flex-basis: 40%;
+}
+
+.recordsTable {
+  flex-basis: 57.7%;
 }

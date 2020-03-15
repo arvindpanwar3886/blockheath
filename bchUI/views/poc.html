@@ -3,26 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
     <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/poc.css" />
+    <script src="../scripts/index.js"></script>
     <title>MediChain Dashboard</title>
   </head>
   <body>
-    <nav>
+    <aside id="aboutUs" class="modal aboutUs card">
+      <span class="close">
+        <i class="fas fa-times" onclick="closeAboutUs()"></i>
+      </span>
+      <div class="modalContent">
+        <h1>about us</h1>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum eos,
+          voluptatum, totam omnis dicta ut atque assumenda distinctio ipsum
+          blanditiis soluta corrupti molestias velit quidem? Officia mollitia
+          totam itaque ab.
+        </p>
+      </div>
+    </aside>
+
+    <nav class="flexbox">
       <a href="../index.html" class="navLogo">MediChain</a>
-      <a class="navlink home" href="#">
-        <i class="fas fa-home" title="Home"></i>
-      </a>
-      <a class="navlink addReport" href="./patientDetailsForm.html">
-        <i class="fas fa-plus" title="Add Report"></i>
-      </a>
-      <a class="navlink mineReport" href="#">
-        <i class="fas fa-redo-alt" title="Mine Report"></i>
-      </a>
-      <a class="navlink account" href="#">
-        <i class="far fa-user-circle" title="Account"></i>
+      <a id="info" class="navlink" href="#" onclick="infoClicked()">
+        <i class="fas fa-info-circle" title="About Us"></i>
       </a>
     </nav>
+
     <main class="flexbox wrapContent">
       <div class="keyDetails card">
         <h3 class="sectionHeading">Patient Key</h3>
@@ -34,36 +45,37 @@
           deleniti ratione corporis nesciunt delectus.</span
         >
       </div>
-      <div class="aboutUs card">
-        <h1>about us</h1>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum eos,
-          voluptatum, totam omnis dicta ut atque assumenda distinctio ipsum
-          blanditiis soluta corrupti molestias velit quidem? Officia mollitia
-          totam itaque ab.
-        </p>
+
+      <div class="utilsMenu card">
+        <h3 class="sectionHeading">Utilities</h3>
+        <button class="mine btn">
+          Mine Records
+        </button>
+        <button class="btn showRecords">
+          Show Records
+        </button>
       </div>
+
       <div class="recordForm card">
         <h3 class="sectionHeading">
           Add Record
         </h3>
-        <form action="">
-          <div class="formElement">
-            <input type="text" name="" id="" placeholder="Patient's Key" />
+        <form action="" class="flexbox">
+          <div id="patientKey" class="formElement">
+            <input type="text" name="" placeholder="Patient's Key" />
           </div>
-          <div class="formElement">
-            <input type="text" name="" id="" placeholder="Patient's Name" />
+          <div id="patientName" class="formElement">
+            <input type="text" name="" placeholder="Patient's Name" />
           </div>
-          <div class="formElement">
-            <input type="text" name="" id="" placeholder="Doctor's Name" />
+          <div id="docName" class="formElement">
+            <input type="text" name="" placeholder="Doctor's Name" />
           </div>
-          <div class="formElement">
-            <input type="date" name="" id="" placeholder="Date" />
+          <div id="date" class="formElement">
+            <input type="date" name="" placeholder="Date" />
           </div>
-          <div class="formElement">
+          <div id="diagnosis" class="formElement">
             <textarea
               name=""
-              id=""
               cols="30"
               rows="10"
               placeholder="Diagnosis"
@@ -71,6 +83,27 @@
           </div>
           <input class="btnCircle" type="submit" value="+" />
         </form>
+      </div>
+
+      <div class="recordsTable card">
+        <h3 class="sectionHeading">Records</h3>
+        <table style="width:100%">
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+          </tr>
+          <tr>
+            <td>Jill</td>
+            <td>Smith</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Eve</td>
+            <td>Jackson</td>
+            <td>94</td>
+          </tr>
+        </table>
       </div>
     </main>
   </body>
