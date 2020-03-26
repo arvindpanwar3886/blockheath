@@ -19,11 +19,6 @@ class ReportTransaction {
     // on valid report create output of report transaction
 
     return ReportTransaction.transactionWithOutputs(medic, [
-      // person responsible for adding report
-      {
-        report,
-        address: medic.publicKey
-      },
       // patient to which the report belongs
       {
         report,

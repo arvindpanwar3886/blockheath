@@ -32,7 +32,8 @@ app.get("/blocks", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render('index', { PORT: HTTP_PORT, patientKey: medic.publicKey, chain: bc.chain });
+  // res.render('index', { PORT: HTTP_PORT, patientKey: medic.publicKey, chain: bc.chain });
+  res.json({ PORT: HTTP_PORT, patientKey: medic.publicKey, chain: bc.chain });
 });
 
 app.get("/add-report", (req, res) => {
@@ -62,7 +63,8 @@ app.get("/account", (req, res) => {
 
   const reports = rep.filter(r => r.address === medic.publicKey);
 
-  res.render('account', { reports });
+  // res.render('account', { reports });
+  res.json(reports);
 });
 
 app.get('/mine-transactions', (req, res) => {
@@ -72,20 +74,20 @@ app.get('/mine-transactions', (req, res) => {
 });
 
 app.get("/mine", (req, res) => {
-  res.render("mine");
+  // res.render("mine");
 });
 
-app.post("/mine", (req, res) => {
-  if (!req.body.data) {
-    return res.json({
-      message: "No Record found!"
-    });
-  }
-  const block = bc.addBlock(req.body.data);
-  // console.log(`Block added: ${block.getBlock()}`);
-  p2pServer.syncChain();
-  res.redirect("/blocks");
-});
+// app.post("/mine", (req, res) => {
+//   if (!req.body.data) {
+//     return res.json({
+//       message: "No Record found!"
+//     });
+//   }
+//   const block = bc.addBlock(req.body.data);
+//   // console.log(`Block added: ${block.getBlock()}`);
+//   p2pServer.syncChain();
+//   res.redirect("/blocks");
+// });
 
 app.get('/transactions', (req, res) => {
   res.json(tp.transactions);
@@ -112,7 +114,7 @@ app.post('/transact', (req, res) => {
   const transaction = medic.createTransaction(patientKey, report, tp);
   console.log(transaction);
   p2pServer.broadcastTransaction(transaction);
-  res.render('add-report');
+  // res.render('add-report');
 });
 
 app.get("/patient-key", (req, res) => {
