@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/majorsprojects/blockchain-in-healthcare#readme",
   "devDependencies": {
-    "electron": "^7.1.8",
+    "electron": "^18.3.7",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2"
   },
